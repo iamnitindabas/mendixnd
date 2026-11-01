@@ -26,7 +26,7 @@ The **skill ID is `mendixnd`** — lowercase, matching the directory name. The d
 ### Install
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g -a opencode
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g -a opencode
 ```
 
 Or copy manually:
@@ -65,7 +65,7 @@ compatibility source. A native `.opencode/skills` copy is also valid.
 ### Install
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g -a claude-code
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g -a claude-code
 ```
 
 Or copy manually:
@@ -97,7 +97,7 @@ Project:  .claude/skills/mendixnd/
 ### Install
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g -a codex
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g -a codex
 ```
 
 Or copy manually:
@@ -130,13 +130,13 @@ or open `/skills` and select MendixND.
 ### Install
 
 ```bash
-gh skill install <owner>/<repo> mendixnd
+gh skill install iamnitindabas/mendixnd mendixnd
 ```
 
 Or use `npx skills`:
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g -a github-copilot
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g -a github-copilot
 ```
 
 Or copy manually:
@@ -162,7 +162,7 @@ Use the /mendixnd skill to inspect this Mendix project.
 
 - Copilot CLI supports `/skills list`, `/skills info`, `/skills reload`, and `/skills add`.
 - `gh skill` is a public preview; update GitHub CLI to 2.90.0 or later.
-- `gh skill preview <owner>/<repo> mendixnd` lets you inspect before installing.
+- `gh skill preview iamnitindabas/mendixnd mendixnd` lets you inspect before installing.
 - Copilot cloud agent and code review also read project skills from supported locations.
 - Personal skills in `~/.copilot/skills` or `~/.agents/skills` are not automatically available in
   every cloud surface; check the surface's setup guide.

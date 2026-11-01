@@ -47,7 +47,7 @@ and architecture are examples, not universal rules.
 Requires Node.js 22.20 or later.
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g \
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g \
   -a opencode -a claude-code -a codex -a github-copilot
 ```
 
@@ -58,18 +58,18 @@ Use `-g` for a user-wide install, or omit it to install into the current project
 
 ```bash
 # Start an agent with the skill for one session
-npx skills use <owner>/<repo>@mendixnd --agent opencode
+npx skills use iamnitindabas/mendixnd@mendixnd --agent opencode
 
 # Or install directly from the skill folder in the repo
-npx skills add https://github.com/<owner>/<repo>/tree/main/skills/mendixnd
+npx skills add https://github.com/iamnitindabas/mendixnd/tree/main/skills/mendixnd
 ```
 
 ### GitHub Copilot CLI
 
 ```bash
-gh skill install <owner>/<repo> mendixnd
+gh skill install iamnitindabas/mendixnd mendixnd
 # or, for Claude Code:
-gh skill install <owner>/<repo> mendixnd --agent claude-code --scope user
+gh skill install iamnitindabas/mendixnd mendixnd --agent claude-code --scope user
 ```
 
 `gh skill` is in public preview and requires GitHub CLI 2.90.0+.
@@ -226,24 +226,16 @@ conflicts.
 
 ---
 
-## Publish to GitHub
+## Repository
 
-The repository is ready for a standalone skill repo. The retrospective and source analysis are
-intentionally excluded from version control by `.gitignore`; review
-[PUBLICATION_CHECKLIST.md](PUBLICATION_CHECKLIST.md) before publishing.
+Published at <https://github.com/iamnitindabas/mendixnd>.
 
-```bash
-git init
-git add .
-git commit -m "feat: add MendixND cross-harness skill"
-gh repo create mendixnd --private --source=. --remote=origin --push
-```
+The retrospective and source analysis are intentionally excluded from this repository by
+`.gitignore`. To fork or republish, use GitHub's **Fork** button and replace
+`iamnitindabas/mendixnd` in the install commands with your own `owner/repo`.
 
-Start private. Review the content, choose the final license, test one install per harness, then
-make it public if appropriate.
-
-After pushing, replace `<owner>` in the install commands with your GitHub username or
-organization.
+Maintainers should follow [PUBLICATION_CHECKLIST.md](PUBLICATION_CHECKLIST.md) before changing
+visibility or publishing a fork.
 
 ---
 

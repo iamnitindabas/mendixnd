@@ -86,7 +86,7 @@ Invoke: `/mendixnd`, or `/skills` to list/reload. Copilot CLI supports `/skills 
 From the repository root:
 
 ```bash
-npx skills add <owner>/<repo> --skill mendixnd -g \
+npx skills add iamnitindabas/mendixnd --skill mendixnd -g \
   -a opencode -a claude-code -a codex -a github-copilot
 ```
 
