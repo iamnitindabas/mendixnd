@@ -10,13 +10,12 @@
 - **Harnesses:** OpenCode, Claude Code, OpenAI Codex, GitHub Copilot, and other
   Agent Skills clients
 
-MendixND turns the findings of a completed Mendix AI-development retrospective into an
-actionable engineering mindset: investigate native capabilities, reuse existing project
-artifacts, design deliberately, verify before claiming completion, and avoid recurring AI
-failure patterns.
+MendixND turns practical Mendix delivery lessons into an actionable engineering mindset:
+investigate native capabilities, reuse existing project artifacts, design deliberately, verify
+before claiming completion, and avoid recurring AI failure patterns.
 
-It is not a project template and not a Mendix tutorial. OSA module names, versions, layouts,
-and architecture are examples, not universal rules.
+It is not a project template and not a Mendix tutorial. Project-specific names, versions,
+layouts, and architecture are examples, not universal rules.
 
 ---
 
@@ -29,7 +28,7 @@ and architecture are examples, not universal rules.
 - Known limitations with version/confidence scope.
 - Non-destructive project initialization.
 - Project-specific guidance template.
-- Complete finding-to-rule traceability.
+- Stable rule IDs with confidence and limitation classification.
 
 The central rule:
 
@@ -180,8 +179,6 @@ mendixnd/
 │   ├── VALIDATION_AND_TESTING.md
 │   ├── AI_AGENT_FAILURE_PATTERNS.md
 │   ├── KNOWN_LIMITATIONS.md
-│   ├── FINDING_INDEX.md
-│   ├── TRACEABILITY.md
 │   └── SCENARIO_TESTS.md
 └── templates/
     ├── PROJECT_ENGINEERING_GUIDANCE.md
@@ -198,22 +195,19 @@ mendixnd/
 - Reference knowledge is read-only during normal development.
 - Project findings do not automatically rewrite universal rules.
 - Universal rule changes require evidence, confidence, scope, and review.
-- Preserve original finding IDs and confidence labels.
+- Preserve stable rule IDs and confidence labels.
 - Do not silently remove or weaken a rule; supersede it with a dated note.
 - Re-run `references/SCENARIO_TESTS.md` after material changes.
 
 ---
 
-## 8. QA and traceability
+## 8. QA
 
 - 131 detailed rules.
-- 124 findings indexed from `DM-`, `UI-`, `BL-`, `MX-`, `PL-`, `QC-` registers.
-- 15 root causes, 20 platform behaviours, 44 planning rules, 40 execution rules.
-- 21 unresolved questions preserved.
+- 20 platform behaviours with version and confidence scope.
 - Eight scenario tests passed (behavioural desk tests with independent agents).
 
-Start with `references/FINDING_INDEX.md` for provenance and
-`references/TRACEABILITY.md` for the conversion report.
+The scenario tests are in `references/SCENARIO_TESTS.md`.
 
 ---
 

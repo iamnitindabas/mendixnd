@@ -4,7 +4,7 @@
 own work. This file is about **behaviour**, not Mendix features. The area references contain the
 technical rules.
 
-The retrospective found three gaps behind most mistakes:
+Field experience shows three gaps behind most mistakes:
 
 1. **Environment gap** — the agent knew Mendix concepts but not *this* installation: version,
    toolchain, Marketplace state, runtime limits.
@@ -22,7 +22,7 @@ The retrospective found three gaps behind most mistakes:
 | Inventing unsupported constructs | A command/widget/property that does not exist; a plan naming another toolchain | Generated from memory/another version without a probe | `MND-N-04`, `MND-N-06`, `MND-MX-10`; probe before plan |
 | Assuming widget semantics | `Visible:` on a DataView button still renders; column `Size` treated as pixels; chart points assumed unclickable | Inferred from web/Bootstrap intuition or another widget | `MND-UI-03`, `MND-UI-06`; read the definition, render a probe |
 | Writing dead CSS classes | `mx-spacing-*`, `gap-2`, `mb-3` — silently ignored | Pattern-matched names from memory; unknown class has no error | `MND-UI-05`; design properties + compiled-CSS audit |
-| Rebuilding instead of altering | Whole page rewritten for a spacing change; 51/52 pages multi-owned | `ALTER ... REPLACE` one-shot; escalation to `create or modify` | `MND-MX-02/04/05`; one owner + surgical alter |
+| Rebuilding instead of altering | Whole page rewritten for a spacing change; many pages multi-owned | `ALTER ... REPLACE` one-shot; escalation to `create or modify` | `MND-MX-02/04/05`; one owner + surgical alter |
 | Declaring done without looking | One-column grids, concatenated labels, 9-button bars pass every gate | Done defined by commands, not rendered output | `MND-V-01/03`; screenshot + measured layout |
 | Treating `check` as proof | CE0117/CE0463 pass check, fail build/runtime | Static checker scope misunderstood | `MND-MX-08`; build + runtime gate |
 | Partial requirement marked Built | A button that cannot render; a guard not implemented | Matrix maps FR→task, not FR→observation | `MND-V-02/11`; per-requirement evidence |
@@ -31,10 +31,10 @@ The retrospective found three gaps behind most mistakes:
 | Session/credential confusion | Login fails after ~5 runs; treated as bad password | Runtime session cap unknown; logout 404 | `MND-V-08`; restart/real logout, read runtime log |
 | Demo-data pollution | Counts/duplicates change every run; assertions rewritten | Shared DB, absolute counts | `MND-V-05`; unique keys, relative assertions |
 | Test asserts its own fixture | Sets a flag, asserts the flag | Cheapest way to green | `MND-V-06/09`; independent outcome |
-| Discounting a real warning as noise | 270 `CONV010`; 7 duplicate flows; `MDL-FLOW01` | High count/inconvenient rule | `MND-MX-09`; triage by rule ID |
+| Discounting a real warning as noise | Hundreds of `CONV010` warnings; duplicate flows; `MDL-FLOW01` | High count/inconvenient rule | `MND-MX-09`; triage by rule ID |
 | Trusting a plan's as-built claim | "Column added" but absent; handoff frozen | Claims not diffed against model | `MND-U-04`, `MND-V-12`; re-derive |
 | Inventing a platform limitation | "Chart points not clickable" was a marker setting | One failed attempt generalized | `MND-N-04/05`; probe the property |
-| Over-fitting one project | OSA module/page names become "the Mendix way" | Confusing example with principle | `MND-U-11`; classify knowledge |
+| Over-fitting one project | Project-specific module/page names become "the Mendix way" | Confusing example with principle | `MND-U-11`; classify knowledge |
 
 ---
 
@@ -159,7 +159,7 @@ If any answer is "no", the task is not done.
 - "The marketplace update failed; I'll run it again."
 - "I'll change the architecture and record it later."
 
-Each of these appeared in the retrospective with a concrete cost.
+Each of these has a concrete cost in real delivery.
 
 ---
 
@@ -170,7 +170,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-001, D-32, MX-008/010/012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing any implementation instruction.
 - **Instruction:** Use only what you have verified in this environment or exact-version docs.
   If unknown, probe or say unknown.
@@ -181,7 +181,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-009, P-01…P-03, RC-04
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reasoning about object context, DataViews, visibility, grids.
 - **Instruction:** Model the Mendix context explicitly; read the widget definition; probe.
 - **Verify:** The page context tree and a rendered check.
@@ -191,7 +191,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-008, UI-012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** styling.
 - **Instruction:** Design property first; if a class, verify it in the compiled CSS.
 - **Verify:** Class audit + screenshot.
@@ -201,7 +201,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** MX-014, UI-003, FINDINGS 86
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** changing an existing page/flow.
 - **Instruction:** Use targeted alter/replace with stable names; preserve structure; diff.
 - **Verify:** Diff shows only the intended change; structure preserved.
@@ -211,7 +211,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-007, RC-03
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reporting completion.
 - **Instruction:** Apply the full definition of done; name what was observed.
 - **Verify:** Evidence per axis.
@@ -221,7 +221,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-003, BL-018, FINDINGS 29
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a lint/check warning is inconvenient.
 - **Instruction:** Classify each material rule: defect, accepted by design, or false positive.
   Record the reason. Do not dismiss by count.
@@ -232,7 +232,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-010, PL-012, E-35
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** the plan is impossible or a requirement conflicts.
 - **Instruction:** Record the conflict/decision/owner; re-baseline affected tasks; escalate
   irreversible choices.
@@ -243,7 +243,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-005/013, RC-13
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using `describe`/`check`/`alter`/migration output.
 - **Instruction:** Know what the command proves; diff/test after any write; treat a failed
   multi-statement write as unknown.
@@ -254,7 +254,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-016
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing/reviewing tests.
 - **Instruction:** Fixture ≠ assertion; assert an independent outcome; mutation-check it.
 - **Verify:** The test fails when the behaviour is broken.
@@ -264,7 +264,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** Retrospective scope, Section 3.3
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** turning a project finding into a rule/template.
 - **Instruction:** Separate universal principle, conditional rule, toolchain, project-specific,
   unresolved. Do not copy module names, versions, or layout choices as universal.
@@ -275,7 +275,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-019, PL-005, RC-15
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using browser tests as acceptance.
 - **Instruction:** Check what the journey asserts (page opens? row count? actual content?);
   add data/layout/role assertions.
@@ -286,7 +286,7 @@ Each of these appeared in the retrospective with a concrete cost.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** E-01, PL-002
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an instruction names a document/name/rule that does not match the model.
 - **Instruction:** Stop, record the disagreement, and resolve before writing. Do not "fix" the
   model to match a stale plan.

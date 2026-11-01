@@ -39,7 +39,7 @@ not a URL; see `UI_AND_STYLING.md`.
 ### 2.2 Generalization
 
 Use real inheritance when subtypes share identity, status, associations, and lifecycle. The
-retrospective's `WorkItem → Verification/Malfunction` is a genuine generalization: shared
+A useful pattern is the `WorkItem → Verification/Malfunction` generalization: shared
 status, reference, number, cancel reason, soft-delete fields, system members, and
 associations are declared once. The cost is a wide physical table; that is often the right
 price.
@@ -237,7 +237,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-009, P-01, RC-04
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** designing or changing a domain model.
 - **Instruction:** Record the owning page/flow, object context, association path, optionality,
   and data sources before adding entities.
@@ -248,7 +248,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** Section 5.4, DM clean checks
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** two entities share identity, status, associations, and lifecycle.
 - **Instruction:** Declare shared members once in a base entity. Do not create unrelated
   entities with copied columns.
@@ -261,7 +261,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** DM-002, BL-012, RC-14
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** storing any derived attribute or counter.
 - **Instruction:** Use the §3 template. Prefer compute-in-memory → one commit; add a repair
   path and staleness marker where a partial failure is possible.
@@ -273,7 +273,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** DM-003, DM-004
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an enumeration/status is derived from multiple attributes.
 - **Instruction:** Write the expression and precedence; test the boundary dates and the
   both-true case. Ensure every consumer uses the same predicate.
@@ -284,7 +284,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** DM-005, DM-006
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** comparing or displaying numeric values.
 - **Instruction:** Record the unit on both sides, decision precision, display precision, and
   the rounding point. Do not let a displayed limit disagree with an OK/NOK decision.
@@ -295,7 +295,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** DM-007, BL-006
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a business key or one-open-record invariant exists.
 - **Instruction:** Required = validation; unique = constraint or accepted race; one-open =
   explicit concurrency design. State what the second caller gets.
@@ -306,7 +306,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** DM-017, P-08
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an attribute represents a date, not a timestamp.
 - **Instruction:** Store at `BeginOfCurrentDay`; compare with Begin/EndOfCurrentDay; never use
   `=` for a DateTime date filter; state the time zone.
@@ -317,7 +317,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** DM-008, DM-009, DM-010, QC-006
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding/changing an entity or attribute.
 - **Instruction:** Write the access policy table; add attribute + grant together; grant
   create to the writer; keep audit entities append-only.
@@ -329,7 +329,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-004, DM patterns
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an entity has dependants or a soft-delete flag.
 - **Instruction:** Choose refuse / soft-delete / cascade. Never hard-delete a work item that
   has a soft-delete lifecycle. Guard all dependants, not only closed ones.
@@ -340,7 +340,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED` (structure) / `STRONGLY SUPPORTED` (consequence)
-- **Source:** DM-001
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** designing entities and lists.
 - **Instruction:** List the XPath/sort/filter/business-key columns and index them in the
   domain task. Verify the index mechanism for the target database.
@@ -352,7 +352,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** DM-013
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an entity is described as a singleton or has duplicated defaults.
 - **Instruction:** State how one row is enforced, how it is read, and where defaults live.
 - **Verify:** A second-row path is blocked or documented; the defaults have one home.
@@ -362,7 +362,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED` (structure) / `SUSPECTED` (UI impact)
-- **Source:** DM-012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** self-references or multiple associations target the same entity.
 - **Instruction:** Name by role; document the reverse direction; if the tool cannot store
   role names, use explicit names and a comment.
@@ -373,7 +373,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** DM-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** enumerations, captions, validation messages, audit snapshots.
 - **Instruction:** Choose one language; use stable technical names or a documented format in
   audit snapshots; do not let caption changes rewrite history.
@@ -384,7 +384,7 @@ Before changing an existing model:
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** DM-019
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an integration is deferred or a flag has no writer/reader.
 - **Instruction:** Do not expose a user-facing filter/column for a flag that is always true or
   has no clear path. Hide the surface until the integration exists.

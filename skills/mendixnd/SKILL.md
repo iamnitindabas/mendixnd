@@ -12,8 +12,8 @@ metadata:
 
 **Mendix-native first. Understand the platform before choosing an implementation approach. Custom implementation only when justified.**
 
-MendixND is a reusable engineering mindset and knowledge base derived from a completed
-Mendix retrospective. It is not a project template and not a license to reproduce one
+MendixND is a reusable engineering mindset and knowledge base derived from practical
+Mendix delivery experience. It is not a project template and not a license to reproduce one
 project's architecture. It exists to stop an AI agent from treating Mendix as a generic
 React/HTML/CSS/JavaScript/SQL/backend project.
 
@@ -177,7 +177,6 @@ Load only what the task needs. Do not mechanically read every file.
 | mxcli, MDL, script ownership, replay, build gates | `references/MXCLI_MDL.md` — only if the project uses mxcli/MDL |
 | Testing, acceptance, evidence, completion claims | `references/VALIDATION_AND_TESTING.md` |
 | Reviewing agent behaviour or diagnosing repeated mistakes | `references/AI_AGENT_FAILURE_PATTERNS.md` |
-| Finding provenance, confidence, rule mapping | `references/FINDING_INDEX.md`, `references/TRACEABILITY.md` |
 | Installing, invoking, maintaining the skill | `README.md` |
 
 If the project does not use a tool, do not apply that tool's conditional rules. Toolchain
@@ -385,8 +384,6 @@ MendixND is a personal reusable engineering asset, not a project file.
 | `references/VALIDATION_AND_TESTING.md` | Definition of done, verification ladder, evidence, test design |
 | `references/AI_AGENT_FAILURE_PATTERNS.md` | Recurring AI mistakes, causes, countermeasures, blame classification |
 | `references/KNOWN_LIMITATIONS.md` | Platform/tool limitations with version and confidence scope |
-| `references/FINDING_INDEX.md` | Every source finding, disposition, and rule mapping |
-| `references/TRACEABILITY.md` | Conversion report: universal, conditional, project-specific, unresolved |
 | `references/SCENARIO_TESTS.md` | Eight realistic skill-behaviour tests and results |
 | `templates/PROJECT_ENGINEERING_GUIDANCE.md` | Project-specific guidance template |
 | `templates/INITIALIZATION_REPORT.md` | Initialization report template |

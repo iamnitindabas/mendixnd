@@ -54,7 +54,7 @@ Failure:           what happens if a step fails; retry/compensation
 Concurrency:       what the second caller gets
 ```
 
-A list of `ACT_*` names is not a state model. The retrospective's biggest logic defects were
+A list of `ACT_*` names is not a state model. The biggest logic defects observed were
 semantic: a hard delete in a soft-delete app, a cancel button whose rights flag could never be
 true, a status derivation that disagreed with selection, a job that reported success while mail
 failed.
@@ -230,7 +230,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** Section 7.7, BL-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** logic changes data or enforces a rule.
 - **Instruction:** Server-side microflow for authority/business rules; nanoflow for UI only.
 - **Verify:** A nanoflow cannot be the only enforcement of a business rule; a direct server
@@ -241,7 +241,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-004, BL-014, PL-009
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a record has multiple statuses/transitions.
 - **Instruction:** Use the §3 template; include actor, guard, stamps, audit, failure, and
   concurrency.
@@ -252,7 +252,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-012, RC-14
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a business action performs multiple writes.
 - **Instruction:** Define what commits together; prefer compute-then-one-commit; document
   partial-failure behavior and repair.
@@ -263,7 +263,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-008, QC-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** scheduled/background work has an audit row.
 - **Instruction:** Create/close it in the entry flow's error scope; record success, failure,
   and outcome.
@@ -274,7 +274,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-009, QC-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a helper returns a status/log/result object.
 - **Instruction:** Read it and propagate failure; do not stamp success unconditionally.
 - **Verify:** A failed mail/import produces a failed job status, not `Succeeded = true`.
@@ -284,7 +284,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-008, BL-010, QC-012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding a scheduled event.
 - **Instruction:** Time zone, repeat fields, overlap, catch-up, idempotency, failure,
   missed-run detection, manual parity, audit.
@@ -295,7 +295,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** BL-002
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** seeding reference data/catalogue.
 - **Instruction:** Guard and factory use the same key; a re-run must not duplicate or disable
   the set.
@@ -306,7 +306,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** BL-006, DM-007
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** "exactly one open X" is required.
 - **Instruction:** Use a constraint/lock/post-commit recheck; state the loser behavior.
 - **Verify:** Concurrent test or documented accepted race.
@@ -316,7 +316,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** BL-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an `ACT_` flow contains substantial logic.
 - **Instruction:** Thin the ACT to rights + call `SUB_` + message/close; test the SUB.
 - **Verify:** The rule can be invoked by `mxcli test`/a scheduler without a page.
@@ -326,7 +326,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** QC-005, BL-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an action takes a rights object/flag/role from the client.
 - **Instruction:** Ignore client booleans; recompute from the object and current user.
 - **Verify:** A forged request is refused; a lower role cannot perform the action.
@@ -336,7 +336,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `SUSPECTED`
-- **Source:** BL-015
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reusing a `VAL_` flow from a second page.
 - **Instruction:** Verify the field is rendered; otherwise use a message or a page-specific
   validation.
@@ -347,7 +347,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** BL-001
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an after-startup flow returns a Boolean/status.
 - **Instruction:** Return the real result (for example `failCount = 0`); do not `return true`
   after ignoring the check.
@@ -358,7 +358,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** BL-017
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a JavaScript action/nanoflow returns success.
 - **Instruction:** Read the result; show/log failure; do not discard it.
 - **Verify:** Force a failed export; the user sees an error.
@@ -368,7 +368,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal (conditional on deployment)
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** BL-021, QC-010
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** the model ships demo/test seed actions.
 - **Instruction:** Separate module, constant-gated, environment-gated, and ideally with an
   un-seed path. Never grant a `TST_` flow directly.
@@ -379,7 +379,7 @@ See `PERFORMANCE.md` for the index/query-budget discipline.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** BL-010
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a page offers "run now" for a scheduled job.
 - **Instruction:** Call the same entry flow (`SE_`) so error handling/idempotency/audit apply.
 - **Verify:** A manual failure produces the same audit/log behavior as a scheduled failure.

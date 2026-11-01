@@ -158,7 +158,7 @@ If any of these is missing, go back to the native scan or ask for a decision.
 
 ## 5. Native alternatives worth checking first
 
-The following are patterns from the retrospective. Treat the **principle** as reusable; treat
+The following are patterns from practice. Treat the **principle** as reusable; treat
 the exact widget/property/version as conditional and verify it in the current project.
 
 | Need | Check first | Conditional note |
@@ -184,7 +184,7 @@ the exact widget/property/version as conditional and verify it in the current pr
 ### 6.1 Version
 
 Never assume a feature exists because a newer Mendix version has it. Record the exact version
-and check the feature's floor. Examples from the retrospective:
+and check the feature's floor. Examples from practice:
 
 - Native `SEND EMAIL` was unavailable at 11.12.5.
 - `REFERENCESELECTOR` was refused by the mxcli build, not by Mendix itself.
@@ -213,7 +213,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** PL-007, PL-008, UI-002, UI-012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any implementation choice.
 - **Instruction:** Use the checklist in §2. Record the native options considered.
 - **Verify:** Task notes name the native options and why they were accepted/rejected.
@@ -223,7 +223,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** DM patterns, PL-003
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding a page, entity, flow, widget, or utility.
 - **Instruction:** Run the §3 search. Extend the existing artifact or record why not.
 - **Verify:** The reuse result is recorded; no duplicate helper with the same responsibility.
@@ -233,7 +233,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-012, PL-008, RC-08
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** spacing, alignment, flex, typography, layout, visibility, or widget
   behaviour is requested.
 - **Instruction:** Use the widget's design properties/properties. If a class is genuinely
@@ -247,7 +247,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** MX-010, MX-012, MX-009, Section 11.4
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a command/widget/property is refused or missing.
 - **Instruction:** Determine whether the limitation is Mendix, the toolchain, the installed
   version, the project configuration, or your own syntax. Probe or consult exact-version docs.
@@ -260,7 +260,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** Section 11.4, D-37/D-42, PL-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** the native option is unsuitable, unsafe, or materially more complex.
 - **Instruction:** Choose the justified alternative and record the trade-off. Do not contort
   the domain model or the UI to avoid a custom component.
@@ -272,7 +272,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** MX-012, MX-001, P-19, PL-002
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using a version-gated activity, a Marketplace module, or a widget property.
 - **Instruction:** Record Mendix version, module version, widget package version, and the
   observed property/behaviour. Do not rely on a memory of another version.
@@ -284,7 +284,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** D-20, D-24, QC-015, P-19
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** installing, upgrading, or editing a Marketplace module.
 - **Instruction:** Pin the version, verify compatibility and the version triple, review the
   roles/capabilities, and prefer wrapping/copying over editing Marketplace content.
@@ -297,7 +297,7 @@ Before adopting or upgrading:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** Section 11.3, PL-020, RC-08
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding CSS, JavaScript, Java, a custom widget, SQL, or external infra.
 - **Instruction:** Use the §4 gate. Record alternatives, owner, maintenance, security,
   performance, upgrade impact.

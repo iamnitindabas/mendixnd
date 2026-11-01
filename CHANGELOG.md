@@ -12,7 +12,6 @@ All notable changes to MendixND are recorded here.
 - `install.ps1` and `install.sh` for local/offline installation.
 - `agents/openai.yaml` for Codex display metadata and implicit-invocation policy.
 - `HARNESSES.md` with per-harness paths, invocation, reload, and validation.
-- `PUBLICATION_CHECKLIST.md` for safe GitHub publication.
 - Root repository README with `npx skills add` and `gh skill install` commands.
 
 ### Changed
@@ -28,9 +27,8 @@ All notable changes to MendixND are recorded here.
 
 ### Preserved
 
-- All 131 rules, 124 indexed findings, 15 root causes, 20 platform behaviours, 44 planning
-  rules, 40 execution rules, and 21 unresolved questions.
-- Original finding IDs and confidence classifications.
+- All 131 rules, 20 platform behaviours, and 21 unresolved questions.
+- Stable rule IDs and confidence classifications.
 - The eight scenario test results.
 
 ## 1.0.0 — 2026-11-02
@@ -39,6 +37,5 @@ All notable changes to MendixND are recorded here.
 
 - Initial MendixND skill.
 - Core principles, native-first guidance, domain, UI, logic, security, performance, mxcli/MDL,
-  validation, AI failure patterns, known limitations, finding index, traceability, and scenario
-  tests.
+  validation, AI failure patterns, known limitations, and scenario tests.
 - Project engineering guidance template and initialization report template.

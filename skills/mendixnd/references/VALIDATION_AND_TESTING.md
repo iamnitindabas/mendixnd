@@ -1,7 +1,7 @@
 # Validation and Testing
 
 **Purpose:** define "done" in a way that cannot be satisfied by a broken UI, a false-positive
-test, or a static checker. The retrospective's core verification failure was a green gate set
+test, or a static checker. A core verification failure is a green gate set
 over a visibly broken application.
 
 ---
@@ -237,7 +237,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-007, RC-03
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any task/phase close-out.
 - **Instruction:** Use §1; state which axes apply and which are unverified.
 - **Verify:** The completion report has evidence per axis.
@@ -247,7 +247,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-005, E-38
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** claiming a requirement built.
 - **Instruction:** Use §2. "Model present" is not "access granted"; "check" is not "build";
   "build" is not "runtime"; "page opens" is not "business outcome".
@@ -258,7 +258,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-007, UI-002/003/017
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any page is declared done.
 - **Instruction:** Use §4: computed layout, overflow, label/value separation, 3 viewports,
   screenshots.
@@ -269,7 +269,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** Section 14.12, D-30
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a journey changes data.
 - **Instruction:** Add an OQL/database assertion independent of the UI.
 - **Verify:** The assertion can fail if the data is wrong.
@@ -279,7 +279,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** PL-014, FINDINGS 26/70
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any browser/microflow test uses shared data.
 - **Instruction:** Unique run key, filter assertions, cleanup, relative counts.
 - **Verify:** Two consecutive runs pass without cross-contamination.
@@ -289,7 +289,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-016
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing a test.
 - **Instruction:** A fixture sets state; an assertion observes an independent outcome. A test
   that asserts what it set is not a test.
@@ -300,7 +300,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-016, QC-017
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** planning tests.
 - **Instruction:** Rights, state transitions, scheduling, integrations, calculations,
   concurrency, exports, negative security.
@@ -311,7 +311,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** LEAD-04, FINDINGS 12/24/71
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** browser tests share a runtime.
 - **Instruction:** Real logout/restart, session cap awareness, console buffer after login,
   unique data, screenshots on failure.
@@ -322,7 +322,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-016, RC-15
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reviewing a test.
 - **Instruction:** Ask: what would make this fail? If nothing, replace it or label it a fixture.
 - **Verify:** Mutation check or a deliberate break makes the test fail.
@@ -332,7 +332,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** P-07, UI-001, QC-005
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** testing a role boundary.
 - **Instruction:** Assert absent menu/content/action; call the action directly; do not rely on
   HTTP 403 in an SPA.
@@ -343,7 +343,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** PL-005, E-34
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** completing any slice.
 - **Instruction:** Command, result counts, log line, screenshot, OQL result, data set size.
 - **Verify:** Evidence is reproducible and tied to the current model.
@@ -353,7 +353,7 @@ not ceremony.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** PL-015, PL-004
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** closing a phase or accepting a handoff.
 - **Instruction:** Re-derive the top facts from the model; do not trust an older checkpoint's
   evidence. Independent audit for high-risk work.

@@ -2,7 +2,7 @@
 
 **Purpose:** the cross-cutting rules that apply to Mendix work regardless of project,
 version, industry, or toolchain. Area-specific rules are in the other references. Each rule
-states its type, priority, confidence, source findings, applicability, verification, and
+states its type, priority, confidence, source reference, applicability, verification, and
 exceptions.
 
 ---
@@ -11,8 +11,7 @@ exceptions.
 
 Read this file after `SKILL.md` at the start of a project, and again when a task crosses
 areas (for example, a page change that also changes entity access). The rules here are
-deliberately short; the evidence and detailed patterns live in the area references and in
-`FINDING_INDEX.md`.
+deliberately short; the detailed patterns and evidence notes live in the area references.
 
 ### Rule types
 
@@ -21,7 +20,7 @@ deliberately short; the evidence and detailed patterns live in the area referenc
 - **Conditional (`MND-C-*` or area rule with a condition)** — applies only when the stated
   condition holds (toolchain, version, widget, deployment).
 - **Toolchain** — mxcli/MDL, Studio Pro, MCP, CI. Kept separate in `MXCLI_MDL.md`.
-- **Project-specific** — an OSA example or historical decision. Never a universal rule.
+- **Project-specific** — a project example or historical decision. Never a universal rule.
 - **Unresolved** — preserved as a question, not converted into a rule.
 
 ### Rule schema
@@ -33,7 +32,7 @@ Every detailed rule uses this shape:
 - Type:        Universal | Conditional (<condition>) | Toolchain | Project-specific
 - Priority:    P0–P3
 - Confidence:  VERIFIED | STRONGLY SUPPORTED | SUSPECTED | UNKNOWN | DOCUMENTED
-- Source:      original finding IDs (DM-/UI-/BL-/MX-/PL-/QC-/RC-/P-/E-)
+- Source:      brief provenance note (optional)
 - Applies when: the condition under which the rule is mandatory
 - Instruction: what to do
 - Why:         the failure/evidence it prevents
@@ -82,13 +81,13 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** PL-007, PL-008, UI-002, UI-012, RC-03, RC-08
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any new feature, page, logic, integration, or styling change.
 - **Instruction:** Before writing code or MDL, record the native capability, the existing
   project artifact, and the Marketplace option you considered. If you choose custom code,
   state why the first three were unsuitable.
-- **Why:** The retrospective's largest rework came from generic implementations that ignored
-  native widget properties and existing patterns.
+- **Why:** Large-scale rework often comes from generic implementations that ignore native
+  widget properties and existing patterns.
 - **Verify:** The task record names the alternatives considered and the reason for the choice.
 - **Exceptions:** None. The depth of the scan scales with the change.
 
@@ -97,7 +96,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-002, E-01, RC-01
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** starting work in any project that is not proven empty.
 - **Instruction:** Read the model, modules, conventions, and security before the first write.
   If the plan/documentation and the model disagree, stop and record the disagreement; do not
@@ -113,7 +112,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** DM patterns, PL-003, RC-02
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a requirement resembles existing functionality.
 - **Instruction:** Search for an existing module, entity, flow, page, snippet, widget, action,
   or utility that can be extended. Extend it rather than creating a parallel implementation.
@@ -128,7 +127,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-005, PL-007, RC-03, RC-15
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reporting any task, phase, or feature complete.
 - **Instruction:** Name the observable outcome per axis — model, access, build, runtime,
   browser/UI, data, security, performance — and attach evidence. A green static command is
@@ -145,7 +144,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** MX-001, MX-005, PL-020, RC-13
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using a widget, property, command, expression, version feature, or
   Marketplace module for the first time in this project.
 - **Instruction:** Read the exact-version documentation, inspect the definition, and run a
@@ -163,7 +162,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** DM-016, BL-017, BL-018, RC-14
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** choosing between designs that both satisfy the requirement.
 - **Instruction:** Prefer fewer artifacts, fewer commits, fewer duplicated rules, and fewer
   custom layers. Do not create an abstraction for a single use. Do not duplicate a document
@@ -179,7 +178,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** DM-002, DM-011, DM-015, BL-012, RC-14
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** storing a date, name, status, counter, identity, or derived value.
 - **Instruction:** Store each fact once. If denormalization is necessary, name every writer,
   the trigger that keeps copies synchronized, and which copy is authoritative. For derived
@@ -197,7 +196,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** QC-005, BL-011, RC-12
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any action changes data or exposes data based on a user right.
 - **Instruction:** Recompute the right on the server from the object being changed and the
   current user. Treat client-side rights objects, hidden buttons, and role labels as display
@@ -213,7 +212,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-008, BL-009, QC-011, RC-14
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** designing jobs, integrations, imports, background work, or multi-step
   business actions.
 - **Instruction:** Record success, partial success, and failure in a place an operator can
@@ -230,7 +229,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal principle; toolchain-specific implementation
 - **Priority:** P0 (when whole-document writers are used)
 - **Confidence:** `VERIFIED`
-- **Source:** PL-003, PL-004, UI-011, MX-002, RC-02
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** scripts, generators, or tools write whole documents; also when multiple
   people/agents edit the same artifact.
 - **Instruction:** Maintain an ordered ownership manifest: one owner per page, flow, entity,
@@ -247,14 +246,14 @@ the scan because custom code is faster to write.
 - **Type:** Universal (method)
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** Retrospective method, Sections 2.3 and 15.5
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** turning a project lesson into guidance, a lint rule, or a template.
 - **Instruction:** Classify each finding as universal, conditional, toolchain, project-specific,
   or unresolved. Record the evidence and confidence. Do not promote a single-project
   observation, a version-specific bug, or a `SUSPECTED` cause into a universal rule.
-- **Why:** The retrospective distinguishes tool defects, platform limits, environment limits,
+- **Why:** MendixND distinguishes tool defects, platform limits, environment limits,
   implementation mistakes, and architectural trade-offs; conflating them produces bad rules.
-- **Verify:** The rule has a source ID, confidence, scope, and exception; a reviewer can see
+- **Verify:** The rule has a source note, confidence, scope, and exception; a reviewer can see
   why it generalizes.
 - **Exceptions:** None.
 
@@ -263,7 +262,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** PL-015, RC-11, QC-016
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** new work follows a declared close-out, audit, or delivery.
 - **Instruction:** Open a new slice with impact analysis, affected artifacts, regression
   checks, manifest update, and a new acceptance gate. Regenerate handoff/status/manifest
@@ -279,7 +278,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-010, PL-012, E-35, RC-05
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** requirements conflict, the plan is impossible, or a decision changes
   toolchain, module topology, layout, theme, Marketplace versions, or security model.
 - **Instruction:** Record the conflict, sources, decision, owner, and consequences. Escalate
@@ -296,7 +295,7 @@ the scan because custom code is faster to write.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-019, PL-016, QC-016, BL-017
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** renaming pages, widgets, grids, flows, modules, or files.
 - **Instruction:** Treat names used by exports, tests, navigation, grants, or documentation as
   interfaces. Search for references before renaming. Preserve the project's naming and folder

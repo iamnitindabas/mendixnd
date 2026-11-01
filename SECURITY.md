@@ -22,5 +22,5 @@ vulnerability that could expose users.
 
 ## Publication
 
-Before publishing a fork, review `PUBLICATION_CHECKLIST.md` and remove any client-specific or
-confidential material.
+Before publishing a fork, review the repository for client-specific or confidential material
+and remove it.

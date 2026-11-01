@@ -1,11 +1,11 @@
 # Performance
 
-**Purpose:** make performance a design property, not a late optimization pass. The
-retrospective's performance risk was invisible at demo volume: zero indexes on 34 entities,
+**Purpose:** make performance a design property, not a late optimization pass.
+A common performance risk is invisible at demo volume: missing indexes,
 retrieve-inside-loop jobs, and one admin refresh on the order of 10,000 sequential queries.
 
-**Important:** performance findings in the source are model-based, not measured at production
-volume. Treat the direction as strongly supported and measure before claiming a number.
+**Important:** performance findings here are model-based, not measured at production volume.
+Treat the direction as strongly supported and measure before claiming a number.
 
 ---
 
@@ -135,7 +135,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED` (structure) / `STRONGLY SUPPORTED` (consequence)
-- **Source:** DM-001
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** designing the domain model or a list.
 - **Instruction:** Write the index list from the actual XPath/sort/filter/business-key paths;
   add it to the domain task, not a later pass.
@@ -146,7 +146,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** BL-007, QC-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a job/refresh processes many records.
 - **Instruction:** Retrieve once, compute in memory or aggregate in the database; batch and
   make resumable. State a query budget independent of row count.
@@ -158,7 +158,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED` (code) / `SUSPECTED` (volume)
-- **Source:** QC-019
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a retrieve feeds a picker, detail panel, export, or statistics.
 - **Instruction:** Add `first`, `limit`, paging, a date window, or a scope. Document why a full
   set is required.
@@ -169,7 +169,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** QC-018, PL-014
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a page/job is business-critical or grows with history.
 - **Instruction:** State the expected volume, query count, and response target; measure on the
   target database.
@@ -180,7 +180,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal (conditional on version/project)
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** QC-018, Section 7.4
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** counts/aggregates or large background refreshes are needed.
 - **Instruction:** Prefer a view entity/aggregate query for read-only aggregates; prefer a task
   queue/batched job for large writes. Verify the feature exists in the project's Mendix version.
@@ -191,7 +191,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** MX-021, QC-018/020
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a report/lint score is cited.
 - **Instruction:** Quote rule counts and specific findings; measure the actual query/response.
   A Performance 100 may mean no N+1 rule exists.
@@ -202,7 +202,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** BL-012, QC-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a batch writes many rows.
 - **Instruction:** Batch/commit per chunk; avoid one long transaction; make the job idempotent
   and resumable.
@@ -213,7 +213,7 @@ and the fallback when the bound is exceeded.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** BL-007, QC-018/019
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a page uses a microflow data source, non-persistent helper, or nested list.
 - **Instruction:** Trace the data source: does it retrieve per row? Does it load an unbounded
   list? Move heavy work out of page load.

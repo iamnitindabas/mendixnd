@@ -11,10 +11,10 @@ properties before CSS classes.**
 For every page, record:
 
 ```text
-Page:             OSA.Example_Detail
+Page:             Module.Example_Detail
 Layout:           Atlas_Core.Atlas_Default (or project layout)
-Parameters:       Example (OSA.Example), optional/required
-Root DataView:    dvExample, entity OSA.Example, source $Example
+Parameters:       Example (Module.Example), optional/required
+Root DataView:    dvExample, entity Module.Example, source $Example
 Nested contexts:  association path, entity, optionality, guard condition
 Tabs:             parent tab container, tab page hierarchy
 Grids:            name, entity, data source/XPath, sort, filters, paging, empty placeholder
@@ -92,7 +92,7 @@ Use the widget's design properties for:
 - background/border where exposed.
 
 A property name must come from the widget definition or the project's existing usage, not
-from memory. In the retrospective, `mx-spacing-*`, `gap-2`, and `mb-3` were invented; they
+from memory. A common failure is inventing `mx-spacing-*`, `gap-2`, or `mb-3`; they
 did not exist in the compiled theme and silently did nothing.
 
 ### 3.2 Class audit
@@ -262,7 +262,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-009, PL-007, RC-04
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** creating or restructuring a page.
 - **Instruction:** Use the §1 template. Record every parameter, DataView, association path,
   optionality, tab parent, grid source, and action target.
@@ -273,7 +273,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-009, P-01
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** nesting DataViews, tabs, grids, or filters.
 - **Instruction:** Name DataViews by entity; comment re-bindings; do not assume
   `$currentObject` means the page parameter.
@@ -284,7 +284,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-010, P-02, P-03
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a page offers drill-through to an optional association.
 - **Instruction:** DataView over the association, container `Visible: <assoc> != empty`,
   button inside. Never pass the association as a page parameter.
@@ -296,7 +296,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-001, P-16
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a button navigates to another page.
 - **Instruction:** List the source roles and the target page grants. Add `Visible:` or grant
   the target deliberately. Do not rely on the platform to hide the button.
@@ -307,7 +307,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** UI-012, PL-008, RC-08
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** spacing, alignment, flex, typography, layout.
 - **Instruction:** Use the widget property; verify the property name in the definition. If a
   class is necessary, grep the compiled theme and record why.
@@ -318,7 +318,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-002, UI-003, UI-018, P-10
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding or changing a data grid.
 - **Instruction:** Manual width on every column, weights that fit the target, `minContent`,
   paging, filters, empty state, and a 375 px check. No per-column phone hide.
@@ -329,7 +329,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** UI-006, P-11
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a list/grid can be empty.
 - **Instruction:** Cover no data, filtered-to-nothing, and no permission; make the call to
   action capability-aware.
@@ -340,7 +340,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** UI-004, UI-005
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** laying out a page with more than a few actions.
 - **Instruction:** Identity band for record actions; section actions beside the section;
   group/separate administrative or destructive actions.
@@ -351,7 +351,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** UI-008
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a selection/bulk/filter property is enabled.
 - **Instruction:** Leave the widget at its safe default until the consumer exists.
 - **Verify:** Every selection mode has a consuming action; every filter changes the result.
@@ -361,7 +361,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** UI-014
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a group box/list can be empty.
 - **Instruction:** Add visibility on the collection or an empty-state line.
 - **Verify:** A fresh/empty record does not show a captioned empty box.
@@ -371,7 +371,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-019, BL-017, Section 6.6
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** renaming or restructuring a page.
 - **Instruction:** Search for references (exports, tests, navigation, grants, docs) before
   renaming; update them in the same change.
@@ -382,7 +382,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** UI-015
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding a menu item or a parameterless page.
 - **Instruction:** Give menu pages stable URLs; decide role homes explicitly; record
   duplicate entry points; keep parameter-only pages out of the menu.
@@ -393,7 +393,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** UI-017, PL-007, P-10
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any page is declared done.
 - **Instruction:** Check 1440/1280/375; measure computed layout, overflow, column count,
   label/value separation, and tab visibility.
@@ -404,7 +404,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** UI-007, UI-009, UI-016, P-01
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a filter DataView sits near tabs or nested grids.
 - **Instruction:** Decide whether it is instantiated once or per tab; bind the filter to the
   intended entity; prefer `between` for date-time columns.
@@ -415,7 +415,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** UI-012
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a design property genuinely does not exist.
 - **Instruction:** Use a documented utility class; verify it in the compiled CSS; record the
   gap. Do not invent a utility name.
@@ -426,7 +426,7 @@ property you add at the end; it is a page-design decision.
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** PagePlan/UI-002/UI-005, PL-007
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** translating a prototype or a written requirement into pages.
 - **Instruction:** Decide layouts, tabs, repeated regions, group boxes, snippets, and action
   placement before writing widgets. Mark deliberate deviations and non-goals.

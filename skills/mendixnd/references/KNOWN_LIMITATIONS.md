@@ -11,35 +11,33 @@ on it. Do not turn a `SUSPECTED` item into a mandatory design rule.
 
 ## 1. Platform behaviours (Mendix)
 
-The source retrospective labels these `P-01`…`P-20` in Section 10. They are **platform
-behaviours**, not planning rules. The source also uses `P-01`…`P-44` for planning rules in
-Section 16; this file uses `MND-PLAT-01`…`MND-PLAT-20` to avoid the collision, and records the
-original `P-0x` reference.
+These are **platform behaviours**, not planning rules. The `MND-PLAT-01`-`MND-PLAT-20` IDs are
+stable.
 
-| ID | Source | Behaviour | Consequence / correct use | Confidence | Scope |
+| ID | Behaviour | Consequence / correct use | Confidence | Scope |
 |---|---|---|---|---|---|
-| MND-PLAT-01 | P-01 | Object context is lexical, not URL-based. A Data Grid XPath evaluates against the nearest enclosing DataView; `$currentObject` means that DataView's entity. | Draw the context tree. Hoisting a filter DataView can change the type. Comment re-binding DataViews. | `VERIFIED` | Mendix page model; stable concept |
-| MND-PLAT-02 | P-02 | A page parameter is a single object, not an association. Passing `$currentObject/Assoc` to `show page` can pass a checker and fail the build (CE1571). | Bind the association in a DataView and pass the DataView object. | `VERIFIED` | Page parameters |
-| MND-PLAT-03 | P-03 | A DataView over an empty optional association still renders its children. | Guard the container with `Visible: <assoc> != empty`, not only the button. | `VERIFIED` | DataView/visibility |
-| MND-PLAT-04 | P-04 | Inheritance works, but a grid over the base entity cannot reach subtype-only attributes. | Put shared columns on the base, use a view entity, or use a subtype grid. | `DOCUMENTED`/`VERIFIED` in project | Data grids |
-| MND-PLAT-05 | P-05 | Entity access is row-level XPath; there is no insert-only rule. Microflows bypass entity access unless marked `@applyentityaccess`. | Grant create to the writer; audit apply-access flows; accept/document append-only limits. | `VERIFIED` | Mendix security |
-| MND-PLAT-06 | P-06 | `read *` / `write *` is expanded when written; a later attribute is not covered. | Add attribute + grant in the same change. | `VERIFIED` | Entity access |
-| MND-PLAT-07 | P-07 | A single-page app may answer a forbidden route with HTTP 200; the shell loads and an access page replaces the content. | Assert absent content/menu, not status code. | `VERIFIED` | SPA/security testing |
-| MND-PLAT-08 | P-08 | There is no date-only type. Date fields are DateTime; comparisons/displays are conventions. | Store at `BeginOfCurrentDay`; compare with Begin/EndOfCurrentDay; never `=` for date-only. | `VERIFIED` | Date handling |
-| MND-PLAT-09 | P-09 | A Data Grid 2 enum column shows the enumeration caption, not its name. | Assert captions in UI; use names in logic. | `VERIFIED` | Data Grid 2 |
-| MND-PLAT-10 | P-10 | Data Grid 2 column `Size` is a weight, not pixels; `MinWidth: minContent` is the phone guard; there is no per-column "hide on phone". | Every column manual with weights; test 375 px; choose another widget if hiding is required. | `VERIFIED` | Data Grid 2 version-specific |
-| MND-PLAT-11 | P-11 | One empty placeholder serves "no data" and "filtered to nothing". | Write copy for both (and no permission); capability-aware CTA. | `VERIFIED` | Grids |
-| MND-PLAT-12 | P-12 | A chart series takes one datasource; a line chart draws SVG paths, not per-point hit targets unless markers are enabled. | Choose the marker style deliberately if a point action is required. | `VERIFIED` | Charts |
-| MND-PLAT-13 | P-13 | OQL can group by a joined attribute, not by an association itself. | Join then group; exclude NULL dates. | `VERIFIED` | OQL |
-| MND-PLAT-14 | P-14 | Scheduled events take only the fields of their repeat kind. | Read the version's scheduled-event syntax/docs before writing. | `VERIFIED` | Scheduled events |
-| MND-PLAT-15 | P-15 | Platform pages read System entities; a role needs access to those entities to open the page. | Check the page's entity reads for every role that can reach it; do not expose a page you cannot grant. | `VERIFIED` | Navigation/security |
-| MND-PLAT-16 | P-16 | A `call microflow` button is hidden when the user cannot execute the microflow; a `show page` button is not hidden when the user cannot view the page. | Add `Visible:` for page targets or grant the page; check reachability. | `VERIFIED` | Page actions |
-| MND-PLAT-17 | P-17 | `show message` is a modal dialog that blocks the page. | Treat dialogs as steps in the harness; read/dismiss. | `VERIFIED` | Browser testing |
-| MND-PLAT-18 | P-18 | The trial runtime caps concurrent sessions (~5) and has a maximum run time. | Restart between journeys; use a real logout; budget run time; read runtime.log. | `VERIFIED` model/`STRONGLY SUPPORTED` runtime | Trial/licence |
-| MND-PLAT-19 | P-19 | Marketplace module version and widget package version are coupled. | Triple check module == themesource/.version == widget package; back up before update. | `VERIFIED` | Marketplace |
-| MND-PLAT-20 | P-20 | `check` is static; mxbuild and runtime see more. | Ladder: check → build → runtime → browser. | `VERIFIED` | mxcli/tooling |
+| MND-PLAT-01 | Object context is lexical, not URL-based. A Data Grid XPath evaluates against the nearest enclosing DataView; `$currentObject` means that DataView's entity. | Draw the context tree. Hoisting a filter DataView can change the type. Comment re-binding DataViews. | `VERIFIED` | Mendix page model; stable concept |
+| MND-PLAT-02 | A page parameter is a single object, not an association. Passing `$currentObject/Assoc` to `show page` can pass a checker and fail the build (CE1571). | Bind the association in a DataView and pass the DataView object. | `VERIFIED` | Page parameters |
+| MND-PLAT-03 | A DataView over an empty optional association still renders its children. | Guard the container with `Visible: <assoc> != empty`, not only the button. | `VERIFIED` | DataView/visibility |
+| MND-PLAT-04 | Inheritance works, but a grid over the base entity cannot reach subtype-only attributes. | Put shared columns on the base, use a view entity, or use a subtype grid. | `DOCUMENTED`/`VERIFIED` in project | Data grids |
+| MND-PLAT-05 | Entity access is row-level XPath; there is no insert-only rule. Microflows bypass entity access unless marked `@applyentityaccess`. | Grant create to the writer; audit apply-access flows; accept/document append-only limits. | `VERIFIED` | Mendix security |
+| MND-PLAT-06 | `read *` / `write *` is expanded when written; a later attribute is not covered. | Add attribute + grant in the same change. | `VERIFIED` | Entity access |
+| MND-PLAT-07 | A single-page app may answer a forbidden route with HTTP 200; the shell loads and an access page replaces the content. | Assert absent content/menu, not status code. | `VERIFIED` | SPA/security testing |
+| MND-PLAT-08 | There is no date-only type. Date fields are DateTime; comparisons/displays are conventions. | Store at `BeginOfCurrentDay`; compare with Begin/EndOfCurrentDay; never `=` for date-only. | `VERIFIED` | Date handling |
+| MND-PLAT-09 | A Data Grid 2 enum column shows the enumeration caption, not its name. | Assert captions in UI; use names in logic. | `VERIFIED` | Data Grid 2 |
+| MND-PLAT-10 | Data Grid 2 column `Size` is a weight, not pixels; `MinWidth: minContent` is the phone guard; there is no per-column "hide on phone". | Every column manual with weights; test 375 px; choose another widget if hiding is required. | `VERIFIED` | Data Grid 2 version-specific |
+| MND-PLAT-11 | One empty placeholder serves "no data" and "filtered to nothing". | Write copy for both (and no permission); capability-aware CTA. | `VERIFIED` | Grids |
+| MND-PLAT-12 | A chart series takes one datasource; a line chart draws SVG paths, not per-point hit targets unless markers are enabled. | Choose the marker style deliberately if a point action is required. | `VERIFIED` | Charts |
+| MND-PLAT-13 | OQL can group by a joined attribute, not by an association itself. | Join then group; exclude NULL dates. | `VERIFIED` | OQL |
+| MND-PLAT-14 | Scheduled events take only the fields of their repeat kind. | Read the version's scheduled-event syntax/docs before writing. | `VERIFIED` | Scheduled events |
+| MND-PLAT-15 | Platform pages read System entities; a role needs access to those entities to open the page. | Check the page's entity reads for every role that can reach it; do not expose a page you cannot grant. | `VERIFIED` | Navigation/security |
+| MND-PLAT-16 | A `call microflow` button is hidden when the user cannot execute the microflow; a `show page` button is not hidden when the user cannot view the page. | Add `Visible:` for page targets or grant the page; check reachability. | `VERIFIED` | Page actions |
+| MND-PLAT-17 | `show message` is a modal dialog that blocks the page. | Treat dialogs as steps in the harness; read/dismiss. | `VERIFIED` | Browser testing |
+| MND-PLAT-18 | The trial runtime caps concurrent sessions (~5) and has a maximum run time. | Restart between journeys; use a real logout; budget run time; read runtime.log. | `VERIFIED` model/`STRONGLY SUPPORTED` runtime | Trial/licence |
+| MND-PLAT-19 | Marketplace module version and widget package version are coupled. | Triple check module == themesource/.version == widget package; back up before update. | `VERIFIED` | Marketplace |
+| MND-PLAT-20 | `check` is static; mxbuild and runtime see more. | Ladder: check -> build -> runtime -> browser. | `VERIFIED` | mxcli/tooling |
 
-### Additional platform properties emphasized by the retrospective
+### Additional platform properties
 
 - **No partial/conditional uniqueness.** "One open verification per tag" is a convention unless
   a database constraint or concurrency strategy enforces it. State how the second caller loses.
@@ -113,7 +111,7 @@ Mendix platform limitations.
 
 ## 5. Unresolved questions to preserve
 
-The retrospective deliberately leaves these unresolved. Do not convert them into rules; use
+These are deliberately left unresolved. Do not convert them into rules; use
 them as investigation prompts when the relevant work appears.
 
 | ID | Question | Why it matters | Resolution |
@@ -130,7 +128,7 @@ them as investigation prompts when the relevant work appears.
 | MND-UQ-10 | Is `WorkDate`'s overdue comparison wrong for date-only rows? | Today's item may be overdue. | Store a known midnight date; inspect. |
 | MND-UQ-11 | Does test scaffolding expose an endpoint when deployed? | Potential surface. | Deploy a copy without the module; probe. |
 | MND-UQ-12 | Are there duplicate business keys in demo data? | Uniqueness only in validation. | OQL group-by; fix/accept. |
-| MND-UQ-13 | Does the association-column filter defect exist elsewhere? | UI-007 is one instance. | Audit every association-path dropdown filter. |
+| MND-UQ-13 | Does the association-column filter defect exist elsewhere? | One instance suggests a broader pattern. | Audit every association-path dropdown filter. |
 | MND-UQ-14 | Can dead-end `show page` buttons be fixed by grants without widening data? | Security model impact. | Map target entity access; prefer `Visible:`. |
 | MND-UQ-15 | What is the real cost of a 90-file check in CI? | Phase vs per-commit gate. | Time on target machine; parallelize. |
 | MND-UQ-16 | Are duplicate flow declarations behaviourally identical? | Future edits may diverge. | Diff pairs; keep one owner. |

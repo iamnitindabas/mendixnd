@@ -3,7 +3,7 @@
 > **How to use this file.** This is the project-specific companion to the reusable **MendixND**
 > skill. It records the actual environment, the conventions in force, the applicable
 > conditional rules, and the exceptions. It is not a copy of the skill. Keep it current; do
-> not turn it into a second retrospective.
+> not turn it into a second copy of the skill.
 >
 > **Initialization status:** <INITIALIZED / ALREADY INITIALIZED / BLOCKED>
 > **Last verified:** <YYYY-MM-DD>

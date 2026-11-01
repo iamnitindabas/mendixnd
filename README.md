@@ -22,9 +22,9 @@ app" delivery.
 
 ## Why this exists
 
-The skill is distilled from a substantial Mendix retrospective covering domain modelling,
+MendixND is distilled from practical Mendix delivery experience across domain modelling,
 pages and widgets, microflows, security, performance, testing, mxcli/MDL, and AI-agent failure
-patterns. It turns those findings into:
+patterns. It turns those lessons into:
 
 - a native-first decision process,
 - existing-project reuse discipline,
@@ -32,11 +32,10 @@ patterns. It turns those findings into:
 - conditional mxcli/MDL knowledge,
 - verification and evidence gates,
 - non-destructive project initialization,
-- a project-specific guidance template,
-- a complete finding-to-rule traceability index.
+- a project-specific guidance template.
 
-It is not a project template and not a Mendix tutorial. OSA module names, versions, layouts,
-and architecture are examples, not universal rules.
+It is not a project template and not a Mendix tutorial. Project-specific names, versions,
+layouts, and architecture are examples, not universal rules.
 
 ---
 
@@ -172,8 +171,6 @@ skills/mendixnd/
 │   ├── VALIDATION_AND_TESTING.md
 │   ├── AI_AGENT_FAILURE_PATTERNS.md
 │   ├── KNOWN_LIMITATIONS.md
-│   ├── FINDING_INDEX.md
-│   ├── TRACEABILITY.md
 │   └── SCENARIO_TESTS.md
 └── templates/
     ├── PROJECT_ENGINEERING_GUIDANCE.md
@@ -181,13 +178,8 @@ skills/mendixnd/
 ```
 
 - 131 detailed rules across universal, conditional, toolchain, and AI-behaviour areas.
-- 124 findings indexed from the `DM-`, `UI-`, `BL-`, `MX-`, `PL-`, and `QC-` registers.
-- 15 root causes, 20 platform behaviours, 44 planning rules, 40 execution rules.
-- 21 unresolved questions preserved as questions, not rules.
+- 20 platform behaviours with version and confidence scope.
 - Eight scenario tests passed (behavioural desk tests with independent agents).
-
-Read `skills/mendixnd/references/FINDING_INDEX.md` for provenance and
-`skills/mendixnd/references/TRACEABILITY.md` for the conversion report.
 
 ---
 
@@ -230,12 +222,8 @@ conflicts.
 
 Published at <https://github.com/iamnitindabas/mendixnd>.
 
-The retrospective and source analysis are intentionally excluded from this repository by
-`.gitignore`. To fork or republish, use GitHub's **Fork** button and replace
-`iamnitindabas/mendixnd` in the install commands with your own `owner/repo`.
-
-Maintainers should follow [PUBLICATION_CHECKLIST.md](PUBLICATION_CHECKLIST.md) before changing
-visibility or publishing a fork.
+To fork or republish, use GitHub's **Fork** button and replace `iamnitindabas/mendixnd` in the
+install commands with your own `owner/repo`.
 
 ---
 
@@ -245,7 +233,6 @@ visibility or publishing a fork.
 - The repository installers only copy files. Review them before running.
 - Skills are instructions, not verified code. Use `gh skill preview` or read the repository
   before installing from any source.
-- Do not publish client-specific retrospective material without approval.
 - See [SECURITY.md](SECURITY.md) for reporting and third-party skill safety.
 
 ---

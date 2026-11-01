@@ -2,7 +2,7 @@
 
 **Conditional reference.** Apply this file only when the project actually uses **mxcli** and
 **MDL** (or a compatible headless Mendix model tool). Do not assume mxcli exists because a
-retrospective used it. If the project uses Studio Pro, MCP, or another toolchain, use that
+an earlier project used it. If the project uses Studio Pro, MCP, or another toolchain, use that
 toolchain's inspection/build/runtime commands and treat the *principles* here as conditional.
 
 The observed environment was **mxcli nightly-20261029-26c19dc21 (2026-10-29)** against
@@ -10,7 +10,7 @@ The observed environment was **mxcli nightly-20261029-26c19dc21 (2026-10-29)** a
 verify before relying on them.
 
 **Coexistence with a maintained mxcli skill/manual:** use that skill for exact command syntax,
-flags, and current CLI mechanics. This file supplies the distilled retrospective lessons and
+flags, and current CLI mechanics. This file supplies distilled field lessons and
 the ownership/replay/verification gates; it is not a competing command manual. If they conflict
 on mechanics, the maintained tool skill wins. If they conflict on safety, ownership, or
 verification, MendixND wins. Record any material conflict.
@@ -301,7 +301,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional (mxcli/MDL project)
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-001, PL-002, RC-01
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** planning work in an mxcli project.
 - **Instruction:** Run version/help/syntax and a capability matrix for every operation the plan
   uses. No task may name an unproven tool.
@@ -312,7 +312,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** PL-003, PL-004, UI-011, MX-002
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** scripts write pages/flows/entities.
 - **Instruction:** Use the §3 manifest; one owner; explicit stub→real only. Audit with a grep.
 - **Verify:** No document appears in two authoritative `create or modify` statements; a
@@ -323,7 +323,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P0
 - **Confidence:** `VERIFIED` (diff) / `UNKNOWN` (exec transactionality)
-- **Source:** MX-004, MX-006, MX-013
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** replaying or editing an existing document.
 - **Instruction:** Run `diff -f struct --exec-output` before exec. After a failed multi-statement
   exec, treat the state as unknown until diff proves it.
@@ -334,7 +334,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** MX-013, UI-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing a page/flow with `create or modify`.
 - **Instruction:** Put every property that must survive in the owning statement. Never rely on
   a separate `alter` property surviving a replay.
@@ -345,7 +345,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** MX-014, UI-003, FINDINGS 86
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** changing a property on a large existing page.
 - **Instruction:** Use `ALTER PAGE ... REPLACE <named widget>` with the same name; keep the
   replacement idempotent. Do not use a placeholder for a later fill.
@@ -356,7 +356,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `VERIFIED` (diagnostic) / `STRONGLY SUPPORTED` (consequence)
-- **Source:** MX-005, BL-003
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** editing a microflow that lint flags.
 - **Instruction:** Do not describe→edit→create/modify a flagged flow. Rebuild deliberately and
   test, or edit in Studio Pro.
@@ -367,7 +367,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-006, MX-005
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using `describe` to edit.
 - **Instruction:** For pages, use `describe page` as the source; diff before exec. For flows,
   check `MDL-FLOW01` first.
@@ -378,7 +378,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** MX-001, P-20, RC-13
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any page or widget change.
 - **Instruction:** Finish with `docker check --no-update-widgets` and then runtime/browser.
   `check` alone is insufficient.
@@ -389,7 +389,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-003, MX-007, MX-021
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** reporting a gate.
 - **Instruction:** Report `0 errors / N warnings / M info`; explain each material warning. Gate
   on counts, not exit status alone.
@@ -400,7 +400,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-009/010/011/012, PL-020
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** using a construct/widget/activity for the first time.
 - **Instruction:** `mxcli syntax <topic>` + 6-line probe + `check`; record accepted spelling and
   fallback.
@@ -411,7 +411,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional (MDL/page expressions)
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-001, E-12/E-13
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing `ContentParams`/`CaptionParams`/client expressions.
 - **Instruction:** Two path segments; `toString()` for non-strings; no association comparison
   in `if`; no `round()`/`formatDecimal` on the client; two widgets with complementary
@@ -423,7 +423,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P2
 - **Confidence:** `VERIFIED` (state) / `STRONGLY SUPPORTED` (cause)
-- **Source:** MX-015
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** running `mxcli test`.
 - **Instruction:** Prefer `--local`; after `--attach`, run the cleanup/drop and re-read modules
   and settings. Do not claim cleanup from "tests passed".
@@ -434,7 +434,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** MX-018
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** planning the build gate.
 - **Instruction:** Run it as a local `mx.exe` process; no Docker required. Use
   `--no-update-widgets` for as-stored.
@@ -445,7 +445,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P1
 - **Confidence:** `UNKNOWN` (exec transactionality) / `VERIFIED` (conflicting docs)
-- **Source:** MX-004
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a multi-statement exec fails.
 - **Instruction:** Do not reason from the help text. Diff the project/script; if non-empty,
   recover deliberately and record what was applied.
@@ -456,7 +456,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** MX-016
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** auditing roles/grants.
 - **Instruction:** `describe module` + each page/flow/entity; combine with lint SEC rules. Do not
   expect `list access`.
@@ -467,7 +467,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** MX-013
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** writing MDL properties.
 - **Instruction:** Pick one spelling (`url:`), one owner, one style; document it.
 - **Verify:** A grep/audit finds no mixed spelling in new scripts.
@@ -477,7 +477,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional (toolchain/Marketplace)
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** QC-015
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an MDL script alters a Marketplace page.
 - **Instruction:** Prefer a project-owned copy/wrapper; if unavoidable, record and re-apply after
   upgrade.
@@ -488,7 +488,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** QC-016, PL-016
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding any script.
 - **Instruction:** Claim the next free number in the README/manifest; include the script in the
   replay order; regenerate the map.
@@ -499,7 +499,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** MX-024, MX-007/008
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a tool message contradicts help/observed behaviour.
 - **Instruction:** Probe; cross-check; treat an empty reason or inverted causality as unknown.
 - **Verify:** A minimal probe settles the behaviour; record it.
@@ -509,7 +509,7 @@ blindly. Do not claim the repair from "build passed"; verify the rendered grid.
 - **Type:** Conditional
 - **Priority:** P3
 - **Confidence:** `VERIFIED`
-- **Source:** MX-017
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** running `check` over many files.
 - **Instruction:** Use per-file `check` during work (fast); run the set check at phase
   boundaries. Budget ~20–25 s/file in the observed build.

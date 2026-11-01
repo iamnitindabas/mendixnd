@@ -1,10 +1,9 @@
 # Security
 
 **Purpose:** make security a designed property of the model and the server-side logic, not a
-set of role names added to satisfy a build error. The retrospective's security defects were
-not exotic: an over-granted stock admin role, demo users at Production, strict mode off,
-client-trusted rights, writable audit entities, and pages granted to roles that cannot use
-them.
+set of role names added to satisfy a build error. Common security defects are not exotic: an
+over-granted stock admin role, demo users at Production, strict mode off, client-trusted
+rights, writable audit entities, and pages granted to roles that cannot use them.
 
 ---
 
@@ -41,7 +40,7 @@ For every user role, maintain a capability table:
 
 ```text
 User role:        FunctionalAdmin
-Module roles:     OSA.FunctionalAdmin, Administration.Administrator, ...
+Module roles:     Module.FunctionalAdmin, Administration.Administrator, ...
 Capabilities:     which pages, which actions, which entities, which rows, which fields
 Why each role:    the business reason
 Risk:             account administration? team membership? audit write? data export?
@@ -212,7 +211,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** QC-001, QC-002, RC-12
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** defining or changing roles.
 - **Instruction:** Use the §2 table; name every module role and its capability. Treat stock
   admin roles as red flags. Read back the role after changes.
@@ -223,7 +222,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** QC-003, QC-004
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** any deployment or security review.
 - **Instruction:** Record security level, strict mode, demo users, guest access; fix deviations
   or record an accepted exception.
@@ -235,7 +234,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** DM-008, DM-009, DM-010, QC-006, QC-007
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** creating/changing an entity or attribute.
 - **Instruction:** For each role: CRUD, XPath, attribute list, system/append-only. Add attribute
   + grant together.
@@ -246,7 +245,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `VERIFIED`
-- **Source:** DM-001, QC-006, QC-009, BL-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** data is team/tenant/owner-scoped.
 - **Instruction:** Put the scope in the entity access XPath; test another team's row; do not
   rely on a page filter or a stored snapshot that authorization never reads.
@@ -257,7 +256,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P0
 - **Confidence:** `STRONGLY SUPPORTED`
-- **Source:** QC-005, BL-011
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an action receives a rights object, flag, role, or state from the client.
 - **Instruction:** Recompute from the object and current user; client copy is display-only.
 - **Verify:** Direct call with forged rights is refused.
@@ -267,7 +266,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** DM-010, QC-006
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** an entity records corrections, limit changes, resets, or history.
 - **Instruction:** Create + read, not write; no edit page; server-side writes; record the
   platform limitation if insert-only cannot be expressed.
@@ -278,7 +277,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** QC-008, UI-001
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** granting a page or adding an action.
 - **Instruction:** For every role, verify page view, action execute, entity read/write. Add
   `Visible:` for `show page` targets or grant deliberately.
@@ -290,7 +289,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** MX-016, QC-010
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** adding a page/flow/nanoflow.
 - **Instruction:** Page → view grant; action → execute grant; `SUB_`/`VAL_`/`SE_`/`ASU_` no
   end-user grant; `TST_` only SM or none.
@@ -301,7 +300,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** QC-015, QC-001
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** a Marketplace module page/role needs a change.
 - **Instruction:** Wrap/copy into a project module or record the edit as a fork with re-apply
   after upgrade. Review the module's roles.
@@ -312,7 +311,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** QC-003, QC-013
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** configuring mail, integrations, demo users, admin accounts.
 - **Instruction:** Use environment configuration/credential store; no committed privileged
   password; safe defaults; document enablement.
@@ -323,7 +322,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P1
 - **Confidence:** `VERIFIED`
-- **Source:** P-07, UI-001, QC-005, Section 17 E-24
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** validating a role boundary.
 - **Instruction:** Assert absent menu/content/action for the lower role; call the action
   directly; do not rely on HTTP 403 in an SPA.
@@ -334,7 +333,7 @@ Positive tests are not enough. For each critical role boundary:
 - **Type:** Universal
 - **Priority:** P2
 - **Confidence:** `VERIFIED`
-- **Source:** QC-001, FINDINGS 64
+- **Source:** Mendix platform and delivery experience
 - **Applies when:** exposing platform/Marketplace administration pages.
 - **Instruction:** Review every menu item and the role that can reach it; verify the role has
   access to the entities the page reads; remove items that are not needed.
