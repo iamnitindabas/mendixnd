@@ -21,4 +21,4 @@ jobs:
         run: npx --yes skills-ref validate ./skills/mendixnd
 
       - name: List discovered skills
-        run: npx --yes skills add . --list
+        run: npx --yes skills add . --list -a universal -y
