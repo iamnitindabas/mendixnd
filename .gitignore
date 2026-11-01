@@ -12,6 +12,13 @@ Thumbs.db
 node_modules/
 npm-debug.log*
 
+# Local skill installs (the repo is the source, not a consumer)
+.agents/
+.claude/
+.opencode/
+.copilot/
+skills-lock.json
+
 # Local installs / backups
 .backups/
 *.bak-*

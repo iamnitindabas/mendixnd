@@ -254,6 +254,7 @@ organization.
 - Skills are instructions, not verified code. Use `gh skill preview` or read the repository
   before installing from any source.
 - Do not publish client-specific retrospective material without approval.
+- See [SECURITY.md](SECURITY.md) for reporting and third-party skill safety.
 
 ---
 
