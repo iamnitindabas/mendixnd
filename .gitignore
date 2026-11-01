@@ -1,0 +1,17 @@
+# Research / private audit trail — review before publishing
+MENDIX_AI_DEVELOPMENT_LEARNINGS.md
+Retrospective/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+
+# Local installs / backups
+.backups/
+*.bak-*

@@ -1,0 +1,7 @@
+interface:
+  display_name: "MendixND"
+  short_description: "Mendix-native-first engineering guidance for Mendix projects"
+  default_prompt: "Use MendixND to inspect this Mendix project, choose a native-first approach, implement it within the existing architecture, and verify the outcome with evidence."
+
+policy:
+  allow_implicit_invocation: true
